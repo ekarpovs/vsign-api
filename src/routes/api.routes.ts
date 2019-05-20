@@ -1,4 +1,4 @@
-import { Request, Response, NextFunction, Application } from 'express';
+import { Request, Response, Application } from 'express';
 import * as company from './company.routes';
 import * as user from './user.routes';
 

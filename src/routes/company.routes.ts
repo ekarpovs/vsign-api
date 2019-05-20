@@ -1,7 +1,8 @@
 import { Request, Response, NextFunction, Application } from 'express';
+import * as companyController from '../controllers/company.controller';
 
 export const register = ( app: Application ) => {
-  app.get( '/api/company', ( req: Request, res: Response ) => {
-    res.send( 'Company called!' );
-  } );
+  app.route('/api/company')
+  .get(companyController.list)
+  .post(companyController.create);
 };
