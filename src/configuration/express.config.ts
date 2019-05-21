@@ -2,6 +2,7 @@ import express, { Application, ErrorRequestHandler } from 'express';
 import morgan from 'morgan';
 import bodyParser from 'body-parser';
 import compress from 'compression';
+import methodOverride from 'method-override';
 
 import * as routes from '../routes';
 
@@ -23,6 +24,8 @@ export const expressConfig = (): Application => {
   app.use(bodyParser.urlencoded({
     extended: true
   }));
+  // For POST and DELETE
+  app.use(methodOverride());
 
   // Configure routes
   routes.register( app );
