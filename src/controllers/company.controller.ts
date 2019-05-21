@@ -1,24 +1,22 @@
-import { NextFunction, Request, Response, RequestHandler } from 'express';
-import companySchemaModel from '../models/company.model';
-import { Result } from 'range-parser';
+import { RequestHandler } from 'express';
 
-const csm = companySchemaModel;
+import Company from '../models/company.model';
 
-export const list: RequestHandler = async (req: Request, res: Response, next: NextFunction) => {
+export const list: RequestHandler = async (req, res, next) => {
   try {
-    const companies = await csm.find({});
-    return res.status(200).json(companies);
+    const companies = await Company.find({});
+    return res.json(companies);
   } catch ( error ) {
-    return res.status(500).json(error);
+    return next(error);
   }
 };
 
-export const create: RequestHandler = async (req: Request, res: Response, next: NextFunction) => {
-  const newCsm = new csm(req.body);
+export const create: RequestHandler = async (req, res, next) => {
+  const newCompany = new Company(req.body);
   try {
-    const company = await newCsm.save();
-    return res.status(200).json(company);
+    const company = await newCompany.save();
+    return res.json(company);
   } catch ( error ) {
-    return res.status(500).json(error);
+    return next(error);
   }
 };

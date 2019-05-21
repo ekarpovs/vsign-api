@@ -1,8 +1,7 @@
 import dotenv from 'dotenv';
-import express from 'express';
 
 import * as connector from './db/db-connector';
-import * as routes from './routes';
+import * as express from './configuration/express.config';
 
 // initialize configuration
 dotenv.config();
@@ -15,14 +14,11 @@ const dbOptions = {
 };
 connector.DbConnector.connect(dbOptions);
 
+const app = express.expressConfig();
+
 // port is now available to the Node.js runtime
 // as if it were an environment variable
 const port = process.env.SERVER_PORT;
-
-const app = express();
-
-// Configure routes
-routes.register( app );
 
 // start the Express server
 const server = app.listen( port, () => {

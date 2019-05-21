@@ -1,6 +1,6 @@
 import mongoose, { Schema, Document } from 'mongoose';
 
-export interface ICompany extends Document {
+export interface ICompanyModel extends Document {
   locked: boolean;
   name: string;
   nick: string;
@@ -18,4 +18,4 @@ const CompanySchema: Schema = new Schema({
 });
 
 // Export the model and return ICompany interface
-export default mongoose.model<ICompany>('Company', CompanySchema);
+export default mongoose.model<ICompanyModel>('Company', CompanySchema);
