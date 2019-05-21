@@ -1,6 +1,7 @@
 import express, { Application, ErrorRequestHandler } from 'express';
 import morgan from 'morgan';
-import * as bodyParser from 'body-parser';
+import bodyParser from 'body-parser';
+import compress from 'compression';
 
 import * as routes from '../routes';
 
@@ -13,7 +14,7 @@ export const expressConfig = (): Application => {
     // tslint:disable-next-line:no-console
     console.log('development');
   } else if (process.env.NODE_ENV === 'production') {
-    // app.use(compress());
+    app.use(compress());
   }
 
   // support parsing of application/json type post data
