@@ -4,7 +4,8 @@ import Company from '../models/company.model';
 
 export const list: RequestHandler = async (req, res, next) => {
   try {
-    const companies = await Company.find({});
+    const nick = req.query.nick;
+    const companies = await Company.find(nick ? {nick} : {});
     return res.json(companies);
   } catch ( error ) {
     return next(error);
