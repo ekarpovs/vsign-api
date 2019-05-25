@@ -24,7 +24,7 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "http://localhost:3005/company",
+							"raw": "http://localhost:3005/api/company",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -116,7 +116,7 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "http://localhost:3005/company/5cb890c58f304b8c30ecdd8f",
+							"raw": "http://localhost:3005/api/company?nick=Comp01",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -213,7 +213,7 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "http://localhost:3005/products",
+							"raw": "http://localhost:3005/api/product",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -243,7 +243,7 @@
 							"raw": "{\n  \"name\": \"Product012\",\n  \"description\": \"Very good product012\",\n  \"orders\": [\n  ]\n}"
 						},
 						"url": {
-							"raw": "http://localhost:3005/products?org=5cb890c58f304b8c30ecdd8f",
+							"raw": "http://localhost:3005/api/product?nick=5cb890c58f304b8c30ecdd8f",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -278,7 +278,7 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "http://localhost:3005/products/5cbc48c639e738959c8e73e6?org=5cb890c58f304b8c30ecdd8f",
+							"raw": "http://localhost:3005/product/5cbc48c639e738959c8e73e6",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -319,7 +319,7 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "http://localhost:3005/users?company=5ccf167eec88442e4c30552d",
+							"raw": "http://localhost:3005/user?company=5ccf167eec88442e4c30552d",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -385,7 +385,7 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "http://localhost:3005/users/5cbd5ec04dc3ba7d646d75ef?org=5cb9934c8d7e417ae46ae67d",
+							"raw": "http://localhost:3005/user/5cbd5ec04dc3ba7d646d75ef",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -421,7 +421,7 @@
 							"raw": "{\n    \"locked\": false,\n    \"_id\": \"5cb9934c8d7e417ae46ae67d\",\n    \"name\": \"Organization02\",\n    \"tradeMark\": \"Org002\",\n    \"homeUrl\": \"https://org02.com\",\n    \"email\": \"org02@g.com\",\n    \"phone\": \"55555555556\",\n    \"addresses\": [\n        {\n            \"zipCode\": \"111333\",\n            \"country\": \"Poland\",\n            \"city\": \"Krakow\",\n            \"street\": \"Stolarsky.st\",\n            \"building\": \"14\"\n        }\n    ],\n    \"products\": [],\n    \"registered\": \"2019-04-19T09:22:20.515Z\",\n    \"__v\": 0\n}"
 						},
 						"url": {
-							"raw": "http://localhost:3005/users/5cbd5db6e367be7550091ff6",
+							"raw": "http://localhost:3005/user/5cbd5db6e367be7550091ff6",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -452,7 +452,7 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "http://localhost:3005/organizations/5c78e501f88a68612c63403e",
+							"raw": "http://localhost:3005/user/5c78e501f88a68612c63403e",
 							"protocol": "http",
 							"host": [
 								"localhost"

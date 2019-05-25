@@ -1,5 +1,6 @@
 import { Request, Response, NextFunction, Application } from 'express';
 import * as api from './api.routes';
+import * as auth from './auth.routes';
 
 export const register = ( app: Application ) => {
   // define a route handler for the default home page
@@ -8,4 +9,5 @@ export const register = ( app: Application ) => {
   } );
 
   api.register( app );
+  auth.register( app );
 };

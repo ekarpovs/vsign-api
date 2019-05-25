@@ -2,20 +2,22 @@ import mongoose, { Schema, Document } from 'mongoose';
 import { ICompanyModel } from './company.model';
 
 export interface IUserModel extends Document {
+  access: string;
+  company: ICompanyModel;
+  created: Date;
+  email: string;
   locked: boolean;
   name: string;
-  email: string;
   password: string;
-  provider: ICompanyModel;
-  created: Date;
 }
 
 const UserSchema: Schema = new Schema({
+  access: String,
   company: { type: Schema.Types.ObjectId, ref: 'Company' },
+  created: { type: Date, default: Date.now() },
+  email: String,
   locked: Boolean,
   name: { type: String, required: true, unique: true },
-  // tslint:disable-next-line:object-literal-sort-keys
-  email: String,
   password: String
 });
 
