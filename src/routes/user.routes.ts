@@ -8,7 +8,7 @@ export const register = ( app: Application ) => {
   .post(uc.create);
 
   app.route('/api/user/:id')
-  .get(uc.one)
-  .put(uc.update)
-  .delete(uc.lock);
+  .get(verifyToken, uc.one)
+  .put(verifyToken, uc.update)
+  .delete(verifyToken, uc.lock);
 };

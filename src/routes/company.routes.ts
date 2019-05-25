@@ -1,5 +1,6 @@
 import { Request, Response, NextFunction, Application } from 'express';
 import * as cc from '../controllers/company.controller';
+import { verifyToken } from '../services/auth.service';
 
 export const register = ( app: Application ) => {
   app.route('/api/company')
@@ -7,7 +8,7 @@ export const register = ( app: Application ) => {
   .post(cc.create);
 
   app.route('/api/company/:id')
-  .get(cc.one)
-  .put(cc.update)
-  .delete(cc.lock);
+  .get(verifyToken, cc.one)
+  .put(verifyToken, cc.update)
+  .delete(verifyToken, cc.lock);
 };
