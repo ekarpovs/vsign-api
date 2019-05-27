@@ -1,9 +1,9 @@
 import { RequestHandler } from 'express';
 import * as bcrypt from 'bcryptjs';
-import * as jwt from 'jsonwebtoken';
 
 import User from '../models/user.model';
 import { validateLogin } from '../services/validation.service';
+import { createAuthPayload } from '../services/auth.service';
 
 export const login: RequestHandler = async (req, res, next) => {
   // Validate request body
@@ -16,9 +16,8 @@ export const login: RequestHandler = async (req, res, next) => {
 
   // Password is correct?
   const validPassword = await bcrypt.compare(req.body.password, user.password);
-  if (!validPassword) { return res.status(400).send('Invalid password - debug only'); }
+  if (!validPassword) { return res.status(401).send('Invalid password - debug only'); }
 
-  // Create and assign token
-  const token = jwt.sign({_id: user._id}, process.env.TOKEN_SECRET);
-  res.header('auth-token', token).send(token);
+  // Create, sign the payload and assign token
+  res.status(200).json(createAuthPayload(user._id)); // variant
 };
