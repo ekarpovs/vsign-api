@@ -19,5 +19,5 @@ export const login: RequestHandler = async (req, res, next) => {
   if (!validPassword) { return res.status(401).send('Invalid password - debug only'); }
 
   // Create, sign the payload and assign token
-  res.status(200).json(createAuthPayload(user._id)); // variant
+  res.status(200).json(createAuthPayload(user._id, user.company.toString())); // variant
 };

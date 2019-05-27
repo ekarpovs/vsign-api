@@ -3,7 +3,7 @@ import expressJwt from 'express-jwt';
 import * as config from '../configuration/environment';
 
   // Create token and sign the payload
-export const createAuthPayload = (userId: string) => {
+export const createAuthPayload = (userId: string, companyId: string) => {
   const token = jwt.sign({id: userId}, config.PRIVATE_KEY, {
     algorithm: 'RS256',
     expiresIn: '2h'
@@ -11,7 +11,7 @@ export const createAuthPayload = (userId: string) => {
 
   const expDate = Date.now() + 1000 * 60 * 60 * 2; // 2 h from now
 
-  return {idToken: token, expiresIn: expDate};
+  return {idToken: token, expiresIn: expDate, company: companyId};
 };
 
 export const checkIfAuthenticated = expressJwt({secret: config.PUBLIC_KEY});
