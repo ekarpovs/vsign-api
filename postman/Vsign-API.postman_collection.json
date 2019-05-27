@@ -1,7 +1,7 @@
 {
 	"info": {
-		"_postman_id": "b446fa48-eac1-4d90-bcba-7ad259077d22",
-		"name": "Vsign-Comp-API",
+		"_postman_id": "de465445-7670-4aa2-a122-1aa1e466a443",
+		"name": "Vsign-API",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
@@ -11,6 +11,16 @@
 				{
 					"name": "Companies",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
 						"method": "GET",
 						"header": [
 							{
@@ -19,10 +29,6 @@
 								"value": "application/json"
 							}
 						],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
 						"url": {
 							"raw": "http://localhost:3005/api/company",
 							"protocol": "http",
@@ -31,6 +37,7 @@
 							],
 							"port": "3005",
 							"path": [
+								"api",
 								"company"
 							]
 						},
@@ -41,6 +48,16 @@
 				{
 					"name": "Add Company",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
 						"method": "POST",
 						"header": [
 							{
@@ -52,7 +69,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"name\": \"Company12\",\n  \"nick\": \"Comp12\",\n  \"tradeMark\": \"Company02.Ltd\",\n  \"homeUrl\": \"https://comp02.com\",\n  \"email\": \"comp02@g.com\",\n  \"phone\": \"55555555556\",\n  \"addresses\": [\n    {\n      \"zipCode\": 111456,\n      \"country\": \"Poland\",\n      \"city\": \"Krakow\",\n      \"street\": \"Central.st\",\n      \"building\": 1\n    }\n  ]\n}"
+							"raw": "{\n  \"name\": \"Company22\",\n  \"nick\": \"Comp22\",\n  \"tradeMark\": \"Company22.Ltd\",\n  \"homeUrl\": \"https://comp22.com\",\n  \"email\": \"comp22@g.com\",\n  \"phone\": \"55555555556\",\n  \"addresses\": [\n    {\n      \"zipCode\": 111456,\n      \"country\": \"Poland\",\n      \"city\": \"Krakow\",\n      \"street\": \"Central.st\",\n      \"building\": 1\n    }\n  ]\n}"
 						},
 						"url": {
 							"raw": "http://localhost:3005/api/company",
@@ -72,6 +89,16 @@
 				{
 					"name": "Get Company",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
 						"method": "GET",
 						"header": [
 							{
@@ -80,12 +107,8 @@
 								"type": "text"
 							}
 						],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
 						"url": {
-							"raw": "http://localhost:3005/api/company/5ce3ba8e3a96da89e0e0d88e",
+							"raw": "http://localhost:3005/api/company/5ceb886f1dd3e84bf024600b",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -94,7 +117,7 @@
 							"path": [
 								"api",
 								"company",
-								"5ce3ba8e3a96da89e0e0d88e"
+								"5ceb886f1dd3e84bf024600b"
 							]
 						}
 					},
@@ -103,6 +126,16 @@
 				{
 					"name": "Get Company by Name",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
 						"method": "GET",
 						"header": [
 							{
@@ -111,20 +144,22 @@
 								"type": "text"
 							}
 						],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
 						"url": {
-							"raw": "http://localhost:3005/api/company?nick=Comp01",
+							"raw": "http://localhost:3005/api/company?nick=Comp22",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
 							"port": "3005",
 							"path": [
-								"company",
-								"5cb890c58f304b8c30ecdd8f"
+								"api",
+								"company"
+							],
+							"query": [
+								{
+									"key": "nick",
+									"value": "Comp22"
+								}
 							]
 						}
 					},
@@ -133,6 +168,16 @@
 				{
 					"name": "Update Company",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
 						"method": "PUT",
 						"header": [
 							{
@@ -143,10 +188,10 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"name\": \"Company12\",\n    \"nick\": \"Comp12\",\n    \"email\": \"comp12@g.com\",\n    \"phone\": \"121212121212\",\n    \"__v\": 0\n}\n"
+							"raw": "{\n    \"phone\": \"55555555555\",\n    \"__v\": 0\n}\n"
 						},
 						"url": {
-							"raw": "http://localhost:3005/api/company/5ce3bc40c8771a6e0444b0b0",
+							"raw": "http://localhost:3005/api/company/5ceb886f1dd3e84bf024600b",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -155,7 +200,7 @@
 							"path": [
 								"api",
 								"company",
-								"5ce3bc40c8771a6e0444b0b0"
+								"5ceb886f1dd3e84bf024600b"
 							],
 							"query": [
 								{
@@ -171,22 +216,29 @@
 				{
 					"name": "Lock Company",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
 						"method": "DELETE",
 						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
 						"url": {
-							"raw": "http://localhost:3005/company/5cb890c58f304b8c30ecdd8f",
+							"raw": "http://localhost:3005/api/company/5ceb886f1dd3e84bf024600b",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
 							"port": "3005",
 							"path": [
+								"api",
 								"company",
-								"5cb890c58f304b8c30ecdd8f"
+								"5ceb886f1dd3e84bf024600b"
 							]
 						}
 					},
@@ -208,12 +260,8 @@
 								"value": "application/json"
 							}
 						],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
 						"url": {
-							"raw": "http://localhost:3005/api/product",
+							"raw": "http://localhost:3005/products",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -243,7 +291,7 @@
 							"raw": "{\n  \"name\": \"Product012\",\n  \"description\": \"Very good product012\",\n  \"orders\": [\n  ]\n}"
 						},
 						"url": {
-							"raw": "http://localhost:3005/api/product?nick=5cb890c58f304b8c30ecdd8f",
+							"raw": "http://localhost:3005/products?org=5cb890c58f304b8c30ecdd8f",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -273,12 +321,8 @@
 								"value": "application/json"
 							}
 						],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
 						"url": {
-							"raw": "http://localhost:3005/product/5cbc48c639e738959c8e73e6",
+							"raw": "http://localhost:3005/products/5cbc48c639e738959c8e73e6?org=5cb890c58f304b8c30ecdd8f",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -314,12 +358,8 @@
 								"value": "application/json"
 							}
 						],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
 						"url": {
-							"raw": "http://localhost:3005/user?company=5ccf167eec88442e4c30552d",
+							"raw": "http://localhost:3005/users?company=5ccf167eec88442e4c30552d",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -370,9 +410,24 @@
 					"response": []
 				},
 				{
-					"name": "Get User",
+					"name": "Login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "9f515f8b-f658-4d58-832d-7fdbbf42b174",
+								"exec": [
+									"var jsonData = pm.response.json();",
+									"var token = jsonData.idToken;",
+									"",
+									"pm.environment.set(\"token\", token);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
 					"request": {
-						"method": "GET",
+						"method": "POST",
 						"header": [
 							{
 								"key": "Content-Type",
@@ -382,24 +437,55 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": ""
+							"raw": "{\n  \"name\": \"User00\",\n  \"password\": \"Us123456\"\n}"
 						},
 						"url": {
-							"raw": "http://localhost:3005/user/5cbd5ec04dc3ba7d646d75ef",
+							"raw": "http://localhost:3005/auth/login",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
 							"port": "3005",
 							"path": [
-								"users",
-								"5cbd5ec04dc3ba7d646d75ef"
-							],
-							"query": [
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get User",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
 								{
-									"key": "org",
-									"value": "5cb9934c8d7e417ae46ae67d"
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
 								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:3005/api/user/5ce907662c44975dc069b9ce",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3005",
+							"path": [
+								"api",
+								"user",
+								"5ce907662c44975dc069b9ce"
 							]
 						}
 					},
@@ -421,7 +507,7 @@
 							"raw": "{\n    \"locked\": false,\n    \"_id\": \"5cb9934c8d7e417ae46ae67d\",\n    \"name\": \"Organization02\",\n    \"tradeMark\": \"Org002\",\n    \"homeUrl\": \"https://org02.com\",\n    \"email\": \"org02@g.com\",\n    \"phone\": \"55555555556\",\n    \"addresses\": [\n        {\n            \"zipCode\": \"111333\",\n            \"country\": \"Poland\",\n            \"city\": \"Krakow\",\n            \"street\": \"Stolarsky.st\",\n            \"building\": \"14\"\n        }\n    ],\n    \"products\": [],\n    \"registered\": \"2019-04-19T09:22:20.515Z\",\n    \"__v\": 0\n}"
 						},
 						"url": {
-							"raw": "http://localhost:3005/user/5cbd5db6e367be7550091ff6",
+							"raw": "http://localhost:3005/users/5cbd5db6e367be7550091ff6",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -445,22 +531,29 @@
 				{
 					"name": "Lock User",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
 						"method": "DELETE",
 						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
 						"url": {
-							"raw": "http://localhost:3005/user/5c78e501f88a68612c63403e",
+							"raw": "http://localhost:3005/api/user/5ce907662c44975dc069b9ce",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
 							"port": "3005",
 							"path": [
-								"organizations",
-								"5c78e501f88a68612c63403e"
+								"api",
+								"user",
+								"5ce907662c44975dc069b9ce"
 							]
 						}
 					},
@@ -473,10 +566,6 @@
 			"request": {
 				"method": "GET",
 				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": ""
-				},
 				"url": {
 					"raw": "http://localhost:3005",
 					"protocol": "http",

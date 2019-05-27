@@ -16,12 +16,18 @@ export const validateCompany = (data: ICompanyModel) => {
 
 export const validateUser = (data: IUserModel) => {
   const schema = {
+    access: Joi.string(),
     email: Joi.string()
       .min(6)
       .required()
       .email(),
-    name: Joi.string()
+      locked: Joi.boolean(),
+      name: Joi.string()
       .min(6)
+      .required(),
+    password: Joi.string()
+      .min(6)
+      .max(1024)
       .required()
   };
   return Joi.validate(data, schema);
