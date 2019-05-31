@@ -1,4 +1,4 @@
-import { Request, Response, NextFunction, Application } from 'express';
+import { Application } from 'express';
 import * as uc from '../controllers/user.controller';
 import { checkIfAuthenticated } from '../services/auth.service';
 

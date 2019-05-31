@@ -4,8 +4,8 @@ import { checkIfAuthenticated } from '../services/auth.service';
 
 export const register = ( app: Application ) => {
   app.route('/api/company')
-  .get(checkIfAuthenticated, cc.list)
-  .post(checkIfAuthenticated, cc.create);
+  .get(cc.list)
+  .post(cc.create);
 
   app.route('/api/company/:id')
   .get(checkIfAuthenticated, cc.one)

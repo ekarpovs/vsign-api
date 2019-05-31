@@ -36,6 +36,9 @@ export const validateUser = (data: IUserModel) => {
 
 export const validateLogin = (data: any) => {
   const schema = {
+    company: Joi.string()
+      .min(6)
+      .required(),
     name: Joi.string()
       .min(6)
       .required(),

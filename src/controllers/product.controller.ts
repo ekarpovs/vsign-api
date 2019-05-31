@@ -1,14 +1,14 @@
 import { RequestHandler } from 'express';
 import * as bcrypt from 'bcryptjs';
 
-import User from '../models/user.model';
+import Product from '../models/product.model';
 import { validateUser } from '../services/validation.service';
 
 export const list: RequestHandler = async (req, res, next) => {
   try {
     const company = req.query.company;
-    const users = await User.find(company ? {company} : {});
-    return res.json(users);
+    const products = await Product.find(company ? {company} : {});
+    return res.json(products);
   } catch ( error ) {
     return next(error);
   }
@@ -16,30 +16,23 @@ export const list: RequestHandler = async (req, res, next) => {
 
 export const create: RequestHandler = async (req, res, next) => {
   // Validate request body
-  const { error } = validateUser(req.body);
-  if (error) { return res.status(400).send(error.details[0].message); }
+  // const { error } = validateProduct(req.body);
+  // if (error) { return res.status(400).send(error.details[0].message); }
 
-  // Check if the user with the name && company already exists -
-  // additional to DB indexes definitions - need to send user friendly message
-  const nameExist = await User.findOne({name: req.body.name, company: req.body.company});
-  if (nameExist) { return res.status(400).send('The user already exists'); }
+  // Check if the user with the name already exists
+  const nameExist = await Product.findOne({name: req.body.name});
+  if (nameExist) { return res.status(400).send('The product already exists'); }
 
-  // Hash password
-  const salt = await bcrypt.genSalt(10);
-  const hashedPassword = await bcrypt.hash(req.body.password, salt);
-
-  const newUser = new User({
-    access: req.body.access,
+  const newProduct = new Product({
     company: req.body.company,
-    email: req.body.email,
+    description: req.body.description,
     locked: false,
-    name: req.body.name,
-    password: hashedPassword
+    name: req.body.name
   });
 
   try {
-    const user = await newUser.save();
-    return res.json(user);
+    const product = await newProduct.save();
+    return res.json(product);
   } catch ( error ) {
     return next(error);
   }
@@ -48,7 +41,7 @@ export const create: RequestHandler = async (req, res, next) => {
 export const one: RequestHandler = async (req, res, next) => {
   try {
     const id = req.params.id;
-    const item = await User.findById(id);
+    const item = await Product.findById(id);
     return res.json(item);
   } catch ( error ) {
     return next(error);
@@ -60,7 +53,7 @@ export const update: RequestHandler = async (req, res, next) => {
     const id = req.params.id;
     const newItem = req.body;
     const { ...updateData } = newItem;
-    const updated = await User.findByIdAndUpdate(id, updateData, { new: true });
+    const updated = await Product.findByIdAndUpdate(id, updateData, { new: true });
     return res.json(updated);
   } catch ( error ) {
     return next(error);
@@ -71,7 +64,7 @@ export const lock: RequestHandler = async (req, res, next) => {
   try {
     const id = req.params.id;
     const updateData = { locked: true };
-    const updated = await User.findByIdAndUpdate(id, updateData, { new: true });
+    const updated = await Product.findByIdAndUpdate(id, updateData, { new: true });
     return res.json(updated);
   } catch ( error ) {
     return next(error);
