@@ -1,15 +1,15 @@
-# Vsign-API
+# VSIGN-API
 
 [![CircleCI](https://circleci.com/gh/ekarpovs/vsign-api.svg?style=shield&circle-token=275c9f15131679e40fdc55fec28dcdc8affcff6c)](https://circleci.com/gh/ekarpovs/vsign-api)
 
-> A Node.js REST API for Vsign site,
+> A Node.js REST API for Vsign site
+
 * [Express](http://expressjs.com/) (Routing middlewares, Web, Api),
 * [Typescript](http://www.typescriptlang.org/),
 * [Mongoose](http://mongoosejs.com/),
 * [SCSS](http://sass-lang.com/),
 * [EJS](https://github.com/mde/ejs),
 * [Nodemon](http://nodemon.io/),
-* [Bootstrap 4](https://getbootstrap.com/),
 * [TSLint](https://palantir.github.io/tslint/),
 * [TypeDoc](https://github.com/TypeStrong/typedoc),
 * [Bcrypt](https://auth0.com/blog/hashing-in-action-understanding-bcrypt/),
@@ -19,14 +19,17 @@
 
 * Support for async/await
 
-# install the repo dependencies with npm
+## install the repo dependencies with npm
+
 npm install
 
-# start the server
+## start the server
+
+```bash
 npm run dev
 ```
 
-### Other commands
+## Other commands
 
 Run the linter manually:
 
@@ -61,7 +64,6 @@ To run the project in a server you'll want to run the built code instead src ver
 npm install
 npm start
 ```
-
 
 ## License
 
