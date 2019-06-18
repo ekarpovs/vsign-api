@@ -1,5 +1,7 @@
 # Vsign-API
 
+[![CircleCI](https://circleci.com/gh/ekarpovs/vsign-api.svg?style=shield&circle-token=275c9f15131679e40fdc55fec28dcdc8affcff6c)](https://circleci.com/gh/ekarpovs/vsign-api)
+
 > A Node.js REST API for Vsign site,
 * [Express](http://expressjs.com/) (Routing middlewares, Web, Api),
 * [Typescript](http://www.typescriptlang.org/),
