@@ -1,18 +1,17 @@
 # Vsign-API
 
 > A Node.js REST API for Vsign site,
-[Express](http://expressjs.com/) (Routing middlewares, Web, Api),
-[Typescript](http://www.typescriptlang.org/),
-[Mongoose](http://mongoosejs.com/),
-[SCSS](http://sass-lang.com/),
-[EJS](https://github.com/mde/ejs),
-[Nodemon](http://nodemon.io/),
-[Bootstrap 4](https://getbootstrap.com/),
-[TSLint](https://palantir.github.io/tslint/),
-[TypeDoc](https://github.com/TypeStrong/typedoc),
-[Bcrypt](https://auth0.com/blog/hashing-in-action-understanding-bcrypt/),
-[Hapy/joi](https://hapibook.jjude.com/book/joi)
-.
+* [Express](http://expressjs.com/) (Routing middlewares, Web, Api),
+* [Typescript](http://www.typescriptlang.org/),
+* [Mongoose](http://mongoosejs.com/),
+* [SCSS](http://sass-lang.com/),
+* [EJS](https://github.com/mde/ejs),
+* [Nodemon](http://nodemon.io/),
+* [Bootstrap 4](https://getbootstrap.com/),
+* [TSLint](https://palantir.github.io/tslint/),
+* [TypeDoc](https://github.com/TypeStrong/typedoc),
+* [Bcrypt](https://auth0.com/blog/hashing-in-action-understanding-bcrypt/),
+* [Hapy/joi](https://hapibook.jjude.com/book/joi)
 
 * Simple npm setup and maintenance, without grunt/gulp/webpack/...
 
