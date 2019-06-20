@@ -11,7 +11,7 @@ export const createAuthPayload = (userId: string, companyId: string) => {
 
   const expDate = Date.now() + 1000 * 60 * 60 * 2; // 2 h from now
 
-  return {idToken: token, expiresIn: expDate, company: companyId};
+  return { idToken: token, expiresIn: expDate };
 };
-
+// @TODO: Move to separate service
 export const checkIfAuthenticated = expressJwt({secret: config.PUBLIC_KEY});

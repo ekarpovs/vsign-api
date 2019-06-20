@@ -5,7 +5,7 @@ import { checkIfAuthenticated } from '../services/auth.service';
 export const register = ( app: Application ) => {
   app.route('/api/user')
   .get(checkIfAuthenticated, uc.list)
-  .post(checkIfAuthenticated, uc.create);
+  .post(uc.create);
 
   app.route('/api/user/:id')
   .get(checkIfAuthenticated, uc.one)
