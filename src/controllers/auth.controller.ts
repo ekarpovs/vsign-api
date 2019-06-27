@@ -11,13 +11,14 @@ export const login: RequestHandler = async (req, res, next) => {
   if (error) { return res.status(400).send(error.details[0].message); }
 
   // Check if the user with the name exists
-  const user = await User.find({name: req.body.name, company: req.body.company});
-  if (!user) { return res.status(400).send('The user does not exist'); }
+  const fres = await User.find({name: req.body.name, company: req.body.company});
+  if (!fres[0]) { return res.status(400).send('The user does not exist'); }
 
+  const user = fres[0];
   // Password is correct?
-  const validPassword = await bcrypt.compare(req.body.password, user[0].password);
+  const validPassword = await bcrypt.compare(req.body.password, user.password);
   if (!validPassword) { return res.status(401).send('Invalid password - debug only'); }
 
   // Create, sign the payload and assign token
-  res.status(200).json(createAuthPayload(user[0]._id, user[0].company.toString())); // variant
+  res.status(200).json(createAuthPayload(user)); // variant
 };

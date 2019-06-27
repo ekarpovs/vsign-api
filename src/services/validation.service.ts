@@ -16,7 +16,7 @@ export const validateCompany = (data: ICompanyModel) => {
 
 export const validateUser = (data: IUserModel) => {
   const schema = {
-    access: Joi.string(),
+    access: Joi.array(),
     company: Joi.string(),
     email: Joi.string()
       .min(6)

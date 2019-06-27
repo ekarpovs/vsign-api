@@ -2,7 +2,7 @@ import mongoose, { Schema, Document } from 'mongoose';
 import { ICompanyModel } from './company.model';
 
 export interface IUserModel extends Document {
-  access: string;
+  access: boolean[];
   company: ICompanyModel;
   created: Date;
   email: string;
@@ -12,7 +12,7 @@ export interface IUserModel extends Document {
 }
 
 const UserSchema: Schema = new Schema({
-  access: { type: String, default: '0000' },
+  access: { type: [Boolean], default: [false, false, false, false] },
   company: { type: Schema.Types.ObjectId, ref: 'Company', required: true, unique: false },
   created: { type: Date, default: Date.now() },
   email: String,
