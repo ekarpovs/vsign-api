@@ -6,6 +6,10 @@ export const list: RequestHandler = async (req, res, next) => {
   try {
     const nick = req.query.nick;
     const companies = await Company.find(nick ? {nick} : {});
+    if (nick && (companies.length < 1)) {
+      return res.status(400).send('The company does not exists');
+    }
+
     return res.json(nick ? companies[0] : companies);
   } catch ( error ) {
     return next(error);
