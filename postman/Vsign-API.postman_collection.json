@@ -6,10 +6,10 @@
 	},
 	"item": [
 		{
-			"name": "Company Management",
+			"name": "Domain Management",
 			"item": [
 				{
-					"name": "Companies",
+					"name": "Domains",
 					"request": {
 						"auth": {
 							"type": "bearer",
@@ -46,7 +46,7 @@
 					"response": []
 				},
 				{
-					"name": "Add Company",
+					"name": "Add Domain",
 					"request": {
 						"auth": {
 							"type": "bearer",
@@ -87,7 +87,7 @@
 					"response": []
 				},
 				{
-					"name": "Get Company",
+					"name": "Get Domain",
 					"request": {
 						"auth": {
 							"type": "bearer",
@@ -124,7 +124,7 @@
 					"response": []
 				},
 				{
-					"name": "Get Company by Name",
+					"name": "Get Domain by Name",
 					"request": {
 						"auth": {
 							"type": "bearer",
@@ -166,7 +166,7 @@
 					"response": []
 				},
 				{
-					"name": "Update Company",
+					"name": "Update Domain",
 					"request": {
 						"auth": {
 							"type": "bearer",
@@ -214,7 +214,7 @@
 					"response": []
 				},
 				{
-					"name": "Lock Company",
+					"name": "Lock Domain",
 					"request": {
 						"auth": {
 							"type": "bearer",
@@ -229,7 +229,7 @@
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:3005/api/company/5ceb886f1dd3e84bf024600b",
+							"raw": "http://localhost:3005/api/domain/5d26ddff06cc364eb4380d22",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -237,8 +237,8 @@
 							"port": "3005",
 							"path": [
 								"api",
-								"company",
-								"5ceb886f1dd3e84bf024600b"
+								"domain",
+								"5d26ddff06cc364eb4380d22"
 							]
 						}
 					},
@@ -288,23 +288,18 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"name\": \"Product012\",\n  \"description\": \"Very good product012\",\n  \"orders\": [\n  ]\n}"
+							"raw": "{\n  \"company\": \"5ceb886f1dd3e84bf024600b\",\n  \"name\": \"Product012\",\n  \"description\": \"Very good product012\"\n}"
 						},
 						"url": {
-							"raw": "http://localhost:3005/products?org=5cb890c58f304b8c30ecdd8f",
+							"raw": "http://localhost:3005/api/product",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
 							"port": "3005",
 							"path": [
-								"products"
-							],
-							"query": [
-								{
-									"key": "org",
-									"value": "5cb890c58f304b8c30ecdd8f"
-								}
+								"api",
+								"product"
 							]
 						}
 					},
@@ -350,6 +345,43 @@
 				{
 					"name": "Users",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:3005/api/user",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3005",
+							"path": [
+								"api",
+								"user"
+							]
+						},
+						"description": "Get Providers list"
+					},
+					"response": []
+				},
+				{
+					"name": "Users of a Domain",
+					"request": {
 						"method": "GET",
 						"header": [
 							{
@@ -375,13 +407,16 @@
 								}
 							]
 						},
-						"description": "Get Providers list"
+						"description": "Get Company's user list"
 					},
 					"response": []
 				},
 				{
 					"name": "Add User",
 					"request": {
+						"auth": {
+							"type": "noauth"
+						},
 						"method": "POST",
 						"header": [
 							{
@@ -392,7 +427,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"company\": \"5ce3bc40c8771a6e0444b0b0\",\n  \"name\": \"User01\",\n  \"email\": \"user01@g.com\",\n  \"password\": \"123456\",\n  \"access\": \"1111\",\n  \"locked\": false\n}"
+							"raw": "{\n  \"domain\": \"5d26ddff06cc364eb4380d22\",\n  \"name\": \"User00\",\n  \"email\": \"user00@g.com\",\n  \"password\": \"Us123456\",\n  \"access\": [true, true, true, true],\n  \"locked\": false\n}\n"
 						},
 						"url": {
 							"raw": "http://localhost:3005/api/user",
@@ -437,7 +472,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"name\": \"User00\",\n  \"password\": \"Us123456\"\n}"
+							"raw": "{\n  \"domain\": \"5d26ddff06cc364eb4380d22\",\n  \"name\": \"User00\",\n  \"password\": \"Us123456\"\n}"
 						},
 						"url": {
 							"raw": "http://localhost:3005/auth/login",
@@ -494,6 +529,16 @@
 				{
 					"name": "Update User",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
 						"method": "PUT",
 						"header": [
 							{
@@ -504,18 +549,19 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"locked\": false,\n    \"_id\": \"5cb9934c8d7e417ae46ae67d\",\n    \"name\": \"Organization02\",\n    \"tradeMark\": \"Org002\",\n    \"homeUrl\": \"https://org02.com\",\n    \"email\": \"org02@g.com\",\n    \"phone\": \"55555555556\",\n    \"addresses\": [\n        {\n            \"zipCode\": \"111333\",\n            \"country\": \"Poland\",\n            \"city\": \"Krakow\",\n            \"street\": \"Stolarsky.st\",\n            \"building\": \"14\"\n        }\n    ],\n    \"products\": [],\n    \"registered\": \"2019-04-19T09:22:20.515Z\",\n    \"__v\": 0\n}"
+							"raw": "{\n  \"company\": \"5cee1f4752f2627754137957\",\n  \"email\": \"user081@g.com\",\n  \"access\": [false, true, false, false]\n}\n"
 						},
 						"url": {
-							"raw": "http://localhost:3005/users/5cbd5db6e367be7550091ff6",
+							"raw": "http://localhost:3005/api/user/5d144d1e31351189f4aa610c",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
 							"port": "3005",
 							"path": [
-								"users",
-								"5cbd5db6e367be7550091ff6"
+								"api",
+								"user",
+								"5d144d1e31351189f4aa610c"
 							],
 							"query": [
 								{

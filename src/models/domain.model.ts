@@ -1,6 +1,6 @@
 import mongoose, { Schema, Document } from 'mongoose';
 
-export interface ICompanyModel extends Document {
+export interface IDomainModel extends Document {
 // addresses: [Address];
   created: Date;
   email: string;
@@ -15,7 +15,7 @@ export interface ICompanyModel extends Document {
   unregistered: Date;
 }
 
-const CompanySchema: Schema = new Schema({
+const DomainSchema: Schema = new Schema({
   created: { type: Date, default: Date.now() },
   email: String,
   homeUrl: String,
@@ -29,5 +29,5 @@ const CompanySchema: Schema = new Schema({
   unregistred: Date
 });
 
-// Export the model and return ICompany interface
-export default mongoose.model<ICompanyModel>('Company', CompanySchema);
+// Export the model and return IDomain interface
+export default mongoose.model<IDomainModel>('Domain', DomainSchema);

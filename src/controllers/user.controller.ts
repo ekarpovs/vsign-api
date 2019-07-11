@@ -6,8 +6,8 @@ import { validateUser } from '../services/validation.service';
 
 export const list: RequestHandler = async (req, res, next) => {
   try {
-    const company = req.query.company;
-    const users = await User.find(company ? {company} : {});
+    const domain = req.query.domain;
+    const users = await User.find(domain ? {domain} : {});
     return res.json(users);
   } catch ( error ) {
     return next(error);
@@ -19,9 +19,9 @@ export const create: RequestHandler = async (req, res, next) => {
   const { error } = validateUser(req.body);
   if (error) { return res.status(400).send(error.details[0].message); }
 
-  // Check if the user with the name && company already exists -
+  // Check if the user with the name && domain already exists -
   // additional to DB indexes definitions - need to send user friendly message
-  const nameExist = await User.findOne({name: req.body.name, company: req.body.company});
+  const nameExist = await User.findOne({name: req.body.name, domain: req.body.domain});
   if (nameExist) { return res.status(400).send('The user already exists'); }
 
   // Hash password
@@ -30,7 +30,7 @@ export const create: RequestHandler = async (req, res, next) => {
 
   const newUser = new User({
     access: req.body.access,
-    company: req.body.company,
+    domain: req.body.domain,
     email: req.body.email,
     locked: false,
     name: req.body.name,

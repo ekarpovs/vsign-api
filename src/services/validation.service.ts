@@ -1,8 +1,8 @@
 import * as Joi from '@hapi/joi';
-import { ICompanyModel } from '../models/company.model';
+import { IDomainModel } from '../models/domain.model';
 import { IUserModel } from '../models/user.model';
 
-export const validateCompany = (data: ICompanyModel) => {
+export const validateDomain = (data: IDomainModel) => {
   const schema = {
     name: Joi.string()
       .min(6)
@@ -17,7 +17,7 @@ export const validateCompany = (data: ICompanyModel) => {
 export const validateUser = (data: IUserModel) => {
   const schema = {
     access: Joi.array(),
-    company: Joi.string(),
+    domain: Joi.string(),
     email: Joi.string()
       .min(6)
       .required()
@@ -36,7 +36,7 @@ export const validateUser = (data: IUserModel) => {
 
 export const validateLogin = (data: any) => {
   const schema = {
-    company: Joi.string()
+    domain: Joi.string()
       .min(6)
       .required(),
     name: Joi.string()

@@ -6,8 +6,8 @@ import { validateUser } from '../services/validation.service';
 
 export const list: RequestHandler = async (req, res, next) => {
   try {
-    const company = req.query.company;
-    const products = await Product.find(company ? {company} : {});
+    const domain = req.query.domain;
+    const products = await Product.find(domain ? {domain} : {});
     return res.json(products);
   } catch ( error ) {
     return next(error);
@@ -24,8 +24,8 @@ export const create: RequestHandler = async (req, res, next) => {
   if (nameExist) { return res.status(400).send('The product already exists'); }
 
   const newProduct = new Product({
-    company: req.body.company,
     description: req.body.description,
+    domain: req.body.domain,
     locked: false,
     name: req.body.name
   });

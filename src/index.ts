@@ -8,7 +8,7 @@ dotenv.config();
 
 // Connect to MongoDb
 const dbOptions = {
-    url: 'mongodb://localhost/orgdb',
+    url: 'mongodb://localhost/vsadmindb',
     useCreateIndex: true,
     useNewUrlParser: true
 };

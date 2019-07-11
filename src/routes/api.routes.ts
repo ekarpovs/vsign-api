@@ -1,5 +1,5 @@
 import { Request, Response, Application } from 'express';
-import * as company from './company.routes';
+import * as domain from './domain.routes';
 import * as user from './user.routes';
 import * as product from './product.routes';
 
@@ -8,7 +8,7 @@ export const register = ( app: Application ) => {
     res.send( 'Api called!' );
   } );
 
-  company.register( app );
+  domain.register( app );
   user.register( app );
   product.register( app );
 };
