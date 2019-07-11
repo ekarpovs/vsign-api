@@ -6,8 +6,8 @@ export interface IDomainModel extends Document {
   email: string;
   homeUrl: string;
   locked: boolean;
+  owner: string;
   name: string;
-  nick: string;
   overview: string;
   phone: string;
   registered: Date;
@@ -20,9 +20,9 @@ const DomainSchema: Schema = new Schema({
   email: String,
   homeUrl: String,
   locked: Boolean,
-  name: { type: String, required: true },
-  nick: { type: String, required: true, unique: true },
+  name: { type: String, required: true, unique: true },
   overview: String,
+  owner: { type: String, required: true },
   phone: String,
   registred: Date,
   tradeMark: String,

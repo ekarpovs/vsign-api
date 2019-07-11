@@ -4,10 +4,10 @@ import { IUserModel } from '../models/user.model';
 
 export const validateDomain = (data: IDomainModel) => {
   const schema = {
-    name: Joi.string()
+    owner: Joi.string()
       .min(6)
       .required(),
-    nick: Joi.string()
+    name: Joi.string()
       .min(6)
       .required()
   };

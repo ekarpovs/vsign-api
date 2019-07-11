@@ -4,13 +4,13 @@ import Domain from '../models/domain.model';
 
 export const list: RequestHandler = async (req, res, next) => {
   try {
-    const nick = req.query.nick;
-    const domains = await Domain.find(nick ? {nick} : {});
-    if (nick && (domains.length < 1)) {
+    const name = req.query.name;
+    const domains = await Domain.find(name ? {name} : {});
+    if (name && (domains.length < 1)) {
       return res.status(400).send('The domain does not exists');
     }
 
-    return res.json(nick ? domains[0] : domains);
+    return res.json(name ? domains[0] : domains);
   } catch ( error ) {
     return next(error);
   }
