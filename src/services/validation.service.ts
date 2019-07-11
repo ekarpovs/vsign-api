@@ -4,13 +4,14 @@ import { IUserModel } from '../models/user.model';
 
 export const validateDomain = (data: IDomainModel) => {
   const schema = {
-    owner: Joi.string()
+    name: Joi.string()
       .min(6)
       .required(),
-    name: Joi.string()
+    owner: Joi.string()
       .min(6)
       .required()
   };
+
   return Joi.validate(data, schema);
 };
 
@@ -31,6 +32,7 @@ export const validateUser = (data: IUserModel) => {
       .max(1024)
       .required()
   };
+
   return Joi.validate(data, schema);
 };
 
