@@ -10,4 +10,8 @@ export const register = ( app: Application ) => {
 
   api.register( app );
   auth.register( app );
+
+  app.get( '*', ( req: Request, res: Response ) => {
+    res.status(404).send();
+  } );
 };
