@@ -7,8 +7,8 @@ export interface IUserModel extends Document {
   created: Date;
   email: string;
   locked: boolean;
-  name: string;
   password: string;
+  username: string;
 }
 
 const UserSchema: Schema = new Schema({
@@ -17,11 +17,11 @@ const UserSchema: Schema = new Schema({
   domain: { type: Schema.Types.ObjectId, ref: 'Domain', required: true, unique: false },
   email: String,
   locked: Boolean,
-  name: { type: String, required: true, unique: false },
-  password: String
+  password: String,
+  username: { type: String, required: true, unique: false }
 });
 
-UserSchema.index({ name: 1, domain: 1 }, { unique: true });
+UserSchema.index({ username: 1, domain: 1 }, { unique: true });
 
 // Export the model and return IUser interface
 export default mongoose.model<IUserModel>('User', UserSchema);

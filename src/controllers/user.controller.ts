@@ -21,7 +21,7 @@ export const create: RequestHandler = async (req, res, next) => {
 
   // Check if the user with the name && domain already exists -
   // additional to DB indexes definitions - need to send user friendly message
-  const nameExist = await User.findOne({name: req.body.name, domain: req.body.domain});
+  const nameExist = await User.findOne({username: req.body.username, domain: req.body.domain});
   if (nameExist) { return res.status(400).send('The user already exists'); }
 
   // Hash password
@@ -33,13 +33,20 @@ export const create: RequestHandler = async (req, res, next) => {
     domain: req.body.domain,
     email: req.body.email,
     locked: false,
-    name: req.body.name,
-    password: hashedPassword
+    password: hashedPassword,
+    username: req.body.username
   });
 
   try {
     const user = await newUser.save();
-    return res.json(user);
+    const createdUser = {
+      access: user.access,
+      domain: user.domain,
+      id: user._id,
+      username: user.username
+    };
+
+    return res.json(createdUser);
   } catch ( error ) {
     return next(error);
   }

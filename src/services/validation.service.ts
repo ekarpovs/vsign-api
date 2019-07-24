@@ -24,12 +24,12 @@ export const validateUser = (data: IUserModel) => {
       .required()
       .email(),
     locked: Joi.boolean(),
-    name: Joi.string()
-      .min(6)
-      .required(),
     password: Joi.string()
       .min(6)
       .max(1024)
+      .required(),
+    username: Joi.string()
+      .min(6)
       .required()
   };
 
@@ -41,12 +41,12 @@ export const validateLogin = (data: any) => {
     domain: Joi.string()
       .min(6)
       .required(),
-    name: Joi.string()
-      .min(6)
-      .required(),
     password: Joi.string()
       .min(6)
       .max(1024)
+      .required(),
+    username: Joi.string()
+      .min(6)
       .required()
   };
   return Joi.validate(data, schema);

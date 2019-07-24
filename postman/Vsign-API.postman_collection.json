@@ -30,7 +30,7 @@
 							}
 						],
 						"url": {
-							"raw": "http://localhost:3005/api/company",
+							"raw": "http://localhost:3005/api/domain",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -38,7 +38,7 @@
 							"port": "3005",
 							"path": [
 								"api",
-								"company"
+								"domain"
 							]
 						},
 						"description": "Get Providers list"
@@ -49,14 +49,7 @@
 					"name": "Add Domain",
 					"request": {
 						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{token}}",
-									"type": "string"
-								}
-							]
+							"type": "noauth"
 						},
 						"method": "POST",
 						"header": [
@@ -69,10 +62,10 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"name\": \"Company22\",\n  \"nick\": \"Comp22\",\n  \"tradeMark\": \"Company22.Ltd\",\n  \"homeUrl\": \"https://comp22.com\",\n  \"email\": \"comp22@g.com\",\n  \"phone\": \"55555555556\",\n  \"addresses\": [\n    {\n      \"zipCode\": 111456,\n      \"country\": \"Poland\",\n      \"city\": \"Krakow\",\n      \"street\": \"Central.st\",\n      \"building\": 1\n    }\n  ]\n}"
+							"raw": "{\n  \"owner\": \"Company00\",\n  \"name\": \"domain00\",\n  \"tradeMark\": \"Company02.Ltd\",\n  \"homeUrl\": \"https://comp02.com\",\n  \"email\": \"comp02@g.com\",\n  \"phone\": \"222222222\",\n  \"addresses\": [\n    {\n      \"zipCode\": 111456,\n      \"country\": \"Poland\",\n      \"city\": \"Krakow\",\n      \"street\": \"Central.st\",\n      \"building\": 1\n    }\n  ]\n}"
 						},
 						"url": {
-							"raw": "http://localhost:3005/api/company",
+							"raw": "http://localhost:3005/api/domain",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -80,7 +73,7 @@
 							"port": "3005",
 							"path": [
 								"api",
-								"company"
+								"domain"
 							]
 						}
 					},
@@ -108,7 +101,7 @@
 							}
 						],
 						"url": {
-							"raw": "http://localhost:3005/api/company/5ceb886f1dd3e84bf024600b",
+							"raw": "http://localhost:3005/api/domain/5d26e6cd1db7eb55806ac59e",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -116,8 +109,8 @@
 							"port": "3005",
 							"path": [
 								"api",
-								"company",
-								"5ceb886f1dd3e84bf024600b"
+								"domain",
+								"5d26e6cd1db7eb55806ac59e"
 							]
 						}
 					},
@@ -145,7 +138,7 @@
 							}
 						],
 						"url": {
-							"raw": "http://localhost:3005/api/company?nick=Comp22",
+							"raw": "http://localhost:3005/api/domain?name=domain00",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -153,12 +146,12 @@
 							"port": "3005",
 							"path": [
 								"api",
-								"company"
+								"domain"
 							],
 							"query": [
 								{
-									"key": "nick",
-									"value": "Comp22"
+									"key": "name",
+									"value": "domain00"
 								}
 							]
 						}
@@ -252,6 +245,120 @@
 				{
 					"name": "Products",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:3005/api/product",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3005",
+							"path": [
+								"api",
+								"product"
+							]
+						},
+						"description": "Get Providers list"
+					},
+					"response": []
+				},
+				{
+					"name": "Add Product",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"domain\": \"5d26ddff06cc364eb4380d22\",\n  \"name\": \"Product012\",\n  \"description\": \"Very good product012\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:3005/api/product",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3005",
+							"path": [
+								"api",
+								"product"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Product",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:3005/products/5cbc48c639e738959c8e73e6?org=5cb890c58f304b8c30ecdd8f",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3005",
+							"path": [
+								"products",
+								"5cbc48c639e738959c8e73e6"
+							],
+							"query": [
+								{
+									"key": "org",
+									"value": "5cb890c58f304b8c30ecdd8f"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Order Management",
+			"item": [
+				{
+					"name": "Orders",
+					"request": {
 						"method": "GET",
 						"header": [
 							{
@@ -276,7 +383,7 @@
 					"response": []
 				},
 				{
-					"name": "Add Product",
+					"name": "Add Order",
 					"request": {
 						"method": "POST",
 						"header": [
@@ -288,10 +395,10 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"company\": \"5ceb886f1dd3e84bf024600b\",\n  \"name\": \"Product012\",\n  \"description\": \"Very good product012\"\n}"
+							"raw": "{\n  \"domain\": \"5ceb886f1dd3e84bf024600b\",\n  \"name\": \"Product012\",\n  \"description\": \"Very good product012\"\n}"
 						},
 						"url": {
-							"raw": "http://localhost:3005/api/product",
+							"raw": "http://localhost:3005/api/order",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -299,14 +406,14 @@
 							"port": "3005",
 							"path": [
 								"api",
-								"product"
+								"order"
 							]
 						}
 					},
 					"response": []
 				},
 				{
-					"name": "Get Product",
+					"name": "Get Order",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -382,6 +489,16 @@
 				{
 					"name": "Users of a Domain",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
 						"method": "GET",
 						"header": [
 							{
@@ -391,19 +508,20 @@
 							}
 						],
 						"url": {
-							"raw": "http://localhost:3005/users?company=5ccf167eec88442e4c30552d",
+							"raw": "http://localhost:3005/api/user?domain=5d26ddff06cc364eb4380d22",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
 							"port": "3005",
 							"path": [
-								"users"
+								"api",
+								"user"
 							],
 							"query": [
 								{
-									"key": "company",
-									"value": "5ccf167eec88442e4c30552d"
+									"key": "domain",
+									"value": "5d26ddff06cc364eb4380d22"
 								}
 							]
 						},
@@ -427,7 +545,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"domain\": \"5d26ddff06cc364eb4380d22\",\n  \"name\": \"User00\",\n  \"email\": \"user00@g.com\",\n  \"password\": \"Us123456\",\n  \"access\": [true, true, true, true],\n  \"locked\": false\n}\n"
+							"raw": "{\n  \"domain\": \"5d26e6cd1db7eb55806ac59e\",\n  \"username\": \"user02\",\n  \"email\": \"user02@g.com\",\n  \"password\": \"Us123456\",\n  \"access\": [true, true, true, true],\n  \"locked\": false\n}\n"
 						},
 						"url": {
 							"raw": "http://localhost:3005/api/user",
@@ -472,7 +590,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"domain\": \"5d26ddff06cc364eb4380d22\",\n  \"name\": \"User00\",\n  \"password\": \"Us123456\"\n}"
+							"raw": "{\n  \"domain\": \"5d26e6cd1db7eb55806ac59e\",\n  \"username\": \"user00\",\n  \"password\": \"Us123456\"\n}"
 						},
 						"url": {
 							"raw": "http://localhost:3005/auth/login",
@@ -549,7 +667,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"company\": \"5cee1f4752f2627754137957\",\n  \"email\": \"user081@g.com\",\n  \"access\": [false, true, false, false]\n}\n"
+							"raw": "{\n  \"domain\": \"5cee1f4752f2627754137957\",\n  \"email\": \"user081@g.com\",\n  \"access\": [false, true, false, false]\n}\n"
 						},
 						"url": {
 							"raw": "http://localhost:3005/api/user/5d144d1e31351189f4aa610c",

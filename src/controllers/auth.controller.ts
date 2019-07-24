@@ -11,7 +11,7 @@ export const login: RequestHandler = async (req, res, next) => {
   if (error) { return res.status(400).send(error.details[0].message); }
 
   // Check if the user with the name exists in the domain
-  const fres = await User.find({name: req.body.name, domain: req.body.domain});
+  const fres = await User.find({username: req.body.username, domain: req.body.domain});
   if (!fres[0]) { return res.status(400).send('The user does not exist'); }
 
   const user = fres[0];
