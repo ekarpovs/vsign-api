@@ -1,6 +1,7 @@
 import { RequestHandler } from 'express';
 
 import Domain from '../models/domain.model';
+import { validateRegister } from '../services/validation.service';
 
 export const list: RequestHandler = async (req, res, next) => {
   try {
@@ -17,9 +18,18 @@ export const list: RequestHandler = async (req, res, next) => {
 };
 
 export const create: RequestHandler = async (req, res, next) => {
-  const newDomain = new Domain(req.body);
   try {
+    // Validate request body
+    const { error } = validateRegister(req.body);
+    if (error) { return res.status(400).send(error.details[0].message); }
+
+    // Check if the domain exists
+    const domains = await Domain.find({domainname: req.body.domainname });
+    if (domains[0]) { return res.status(400).send('The domain with the name already exist'); }
+
+    const newDomain = new Domain(req.body);
     const domain = await newDomain.save();
+
     return res.json(domain);
   } catch ( error ) {
     return next(error);

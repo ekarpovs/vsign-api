@@ -12,7 +12,7 @@ export const login: RequestHandler = async (req, res, next) => {
   if (error) { return res.status(400).send(error.details[0].message); }
 
   // Check if the domain exists
-  const domains = await Domain.find({name: req.body.domain });
+  const domains = await Domain.find({domainname: req.body.domainname });
   if (!domains[0]) { return res.status(400).send('The domain does not exist'); }
   const domain = domains[0];
 
