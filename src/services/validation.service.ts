@@ -1,6 +1,6 @@
 import * as Joi from '@hapi/joi';
 import { IDomainModel } from '../models/domain.model';
-import { IUserModel } from '../models/user.model';
+import { IUserModel, IAccessModel } from '../models/user.model';
 
 export const validateDomain = (data: IDomainModel) => {
   const schema = {
@@ -17,16 +17,16 @@ export const validateDomain = (data: IDomainModel) => {
 
 export const validateUser = (data: IUserModel) => {
   const schema = {
-    // access: Joi.array(),
+    access: Joi.any(),
     domain: Joi.string()
       .min(24)
       .max(25)
       .required(),
-  // email: Joi.string()
-    //   .min(6)
-    //   .required()
-    //   .email(),
-    // locked: Joi.boolean(),
+    email: Joi.string()
+      .min(6)
+      .required()
+      .email(),
+    locked: Joi.boolean(),
     password: Joi.string()
       .min(6)
       .max(1024)
@@ -34,6 +34,17 @@ export const validateUser = (data: IUserModel) => {
     username: Joi.string()
       .min(6)
       .required()
+  };
+
+  return Joi.validate(data, schema);
+};
+
+export const validateUserAccess = (data: IAccessModel) => {
+  const schema = {
+    key: Joi.boolean(),
+    order: Joi.boolean(),
+    product: Joi.boolean(),
+    user: Joi.boolean()
   };
 
   return Joi.validate(data, schema);
