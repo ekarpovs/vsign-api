@@ -65,22 +65,3 @@ export const validateLogin = (data: any) => {
   };
   return Joi.validate(data, schema);
 };
-
-export const validateRegister = (data: any) => {
-  const schema = {
-    domainname: Joi.string()
-      .min(6)
-      .required(),
-    owner: Joi.string()
-      .min(6)
-      .required(),
-    // password: Joi.string()
-    //   .min(6)
-    //   .max(1024)
-    //   .required(),
-    username: Joi.string()
-      .min(6)
-      .required()
-  };
-  return Joi.validate(data, schema);
-};
