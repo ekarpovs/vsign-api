@@ -27,16 +27,16 @@ export const expressConfig = (): Application => {
   // For POST and DELETE
   app.use(methodOverride());
 
-  // Configure routes
-  routes.register( app );
-
   // Configure CORS - Cross Origin Resource Sharing
   app.use((req, res, next) => {
     res.setHeader('Access-Control-Allow-Origin', '*');
-    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
+    res.setHeader('Access-Control-Allow-Methods', 'GET, OPTIONS, PATCH, POST, PUT, DELETE');
     res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type, Authorization');
     next();
   });
+
+  // Configure routes
+  routes.register( app );
 
   const errorHandler: ErrorRequestHandler = (err, req, res, next) => {
     // tslint:disable-next-line:no-console
