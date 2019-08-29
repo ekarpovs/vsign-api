@@ -1,4 +1,6 @@
 import express, { Application, ErrorRequestHandler } from 'express';
+import helmet from 'helmet';
+
 import morgan from 'morgan';
 import bodyParser from 'body-parser';
 import compress from 'compression';
@@ -18,6 +20,7 @@ export const expressConfig = (): Application => {
     app.use(compress());
   }
 
+  app.use(helmet());
   // support parsing of application/json type post data
   app.use(bodyParser.json());
   // support parsing of application/x-www-form-urlencoded post data

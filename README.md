@@ -13,7 +13,8 @@
 * [TSLint](https://palantir.github.io/tslint/),
 * [TypeDoc](https://github.com/TypeStrong/typedoc),
 * [Bcrypt](https://auth0.com/blog/hashing-in-action-understanding-bcrypt/),
-* [Hapy/joi](https://hapibook.jjude.com/book/joi)
+* [Hapy/joi](https://hapibook.jjude.com/book/joi),
+* [Helmet](https://helmetjs.github.io/)
 
 * Simple npm setup and maintenance, without grunt/gulp/webpack/...
 
