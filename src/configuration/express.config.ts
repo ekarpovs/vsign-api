@@ -20,6 +20,7 @@ export const expressConfig = (): Application => {
     app.use(compress());
   }
 
+  // Set various HTTP headers
   app.use(helmet());
   // support parsing of application/json type post data
   app.use(bodyParser.json());
