@@ -264,7 +264,7 @@
 							}
 						],
 						"url": {
-							"raw": "http://localhost:3005/api/product",
+							"raw": "http://localhost:3005/api/products",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -272,7 +272,7 @@
 							"port": "3005",
 							"path": [
 								"api",
-								"product"
+								"products"
 							]
 						},
 						"description": "Get Providers list"
@@ -305,7 +305,7 @@
 							"raw": "{\n  \"domain\": \"5d26ddff06cc364eb4380d22\",\n  \"name\": \"Product012\",\n  \"description\": \"Very good product012\"\n}"
 						},
 						"url": {
-							"raw": "http://localhost:3005/api/product",
+							"raw": "http://localhost:3005/api/products",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -313,7 +313,7 @@
 							"port": "3005",
 							"path": [
 								"api",
-								"product"
+								"products"
 							]
 						}
 					},
@@ -359,6 +359,16 @@
 				{
 					"name": "Orders",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
 						"method": "GET",
 						"header": [
 							{
@@ -368,14 +378,15 @@
 							}
 						],
 						"url": {
-							"raw": "http://localhost:3005/products",
+							"raw": "http://localhost:3005/api/orders",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
 							"port": "3005",
 							"path": [
-								"products"
+								"api",
+								"orders"
 							]
 						},
 						"description": "Get Providers list"
@@ -398,7 +409,7 @@
 							"raw": "{\n  \"domain\": \"5ceb886f1dd3e84bf024600b\",\n  \"name\": \"Product012\",\n  \"description\": \"Very good product012\"\n}"
 						},
 						"url": {
-							"raw": "http://localhost:3005/api/order",
+							"raw": "http://localhost:3005/api/orders",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -406,7 +417,7 @@
 							"port": "3005",
 							"path": [
 								"api",
-								"order"
+								"orders"
 							]
 						}
 					},
@@ -424,21 +435,15 @@
 							}
 						],
 						"url": {
-							"raw": "http://localhost:3005/products/5cbc48c639e738959c8e73e6?org=5cb890c58f304b8c30ecdd8f",
+							"raw": "http://localhost:3005/orders/5cbc48c639e738959c8e73e6",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
 							"port": "3005",
 							"path": [
-								"products",
+								"orders",
 								"5cbc48c639e738959c8e73e6"
-							],
-							"query": [
-								{
-									"key": "org",
-									"value": "5cb890c58f304b8c30ecdd8f"
-								}
 							]
 						}
 					},
@@ -471,7 +476,7 @@
 							}
 						],
 						"url": {
-							"raw": "http://localhost:3005/api/user",
+							"raw": "http://localhost:3005/api/users?domain=5d399d4f2882bd58b84db9b2",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -479,7 +484,13 @@
 							"port": "3005",
 							"path": [
 								"api",
-								"user"
+								"users"
+							],
+							"query": [
+								{
+									"key": "domain",
+									"value": "5d399d4f2882bd58b84db9b2"
+								}
 							]
 						},
 						"description": "Get Providers list"
@@ -508,7 +519,7 @@
 							}
 						],
 						"url": {
-							"raw": "http://localhost:3005/api/user?domain=5d26ddff06cc364eb4380d22",
+							"raw": "http://localhost:3005/api/users?domain=5d26ddff06cc364eb4380d22",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -516,7 +527,7 @@
 							"port": "3005",
 							"path": [
 								"api",
-								"user"
+								"users"
 							],
 							"query": [
 								{
@@ -548,7 +559,7 @@
 							"raw": "{\n  \"domain\": \"5d26e6cd1db7eb55806ac59e\",\n  \"username\": \"user02\",\n  \"email\": \"user02@g.com\",\n  \"password\": \"Us123456\",\n  \"access\": [true, true, true, true],\n  \"locked\": false\n}\n"
 						},
 						"url": {
-							"raw": "http://localhost:3005/api/user",
+							"raw": "http://localhost:3005/api/users",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -556,7 +567,7 @@
 							"port": "3005",
 							"path": [
 								"api",
-								"user"
+								"users"
 							]
 						}
 					},
@@ -590,7 +601,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"domain\": \"5d26e6cd1db7eb55806ac59e\",\n  \"username\": \"user00\",\n  \"password\": \"Us123456\"\n}"
+							"raw": "{\n  \"domainname\": \"domain00\",\n  \"username\": \"user00\",\n  \"password\": \"Us123456\"\n}"
 						},
 						"url": {
 							"raw": "http://localhost:3005/auth/login",
@@ -629,7 +640,7 @@
 							}
 						],
 						"url": {
-							"raw": "http://localhost:3005/api/user/5ce907662c44975dc069b9ce",
+							"raw": "http://localhost:3005/api/users/5d6fbda9bf27ce346c9d4ffc",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -637,8 +648,8 @@
 							"port": "3005",
 							"path": [
 								"api",
-								"user",
-								"5ce907662c44975dc069b9ce"
+								"users",
+								"5d6fbda9bf27ce346c9d4ffc"
 							]
 						}
 					},
@@ -670,7 +681,7 @@
 							"raw": "{\n  \"domain\": \"5cee1f4752f2627754137957\",\n  \"email\": \"user081@g.com\",\n  \"access\": [false, true, false, false]\n}\n"
 						},
 						"url": {
-							"raw": "http://localhost:3005/api/user/5d144d1e31351189f4aa610c",
+							"raw": "http://localhost:3005/api/users/5d144d1e31351189f4aa610c",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -678,7 +689,7 @@
 							"port": "3005",
 							"path": [
 								"api",
-								"user",
+								"users",
 								"5d144d1e31351189f4aa610c"
 							],
 							"query": [
@@ -708,7 +719,7 @@
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:3005/api/user/5ce907662c44975dc069b9ce",
+							"raw": "http://localhost:3005/api/users/5ce907662c44975dc069b9ce",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -716,7 +727,7 @@
 							"port": "3005",
 							"path": [
 								"api",
-								"user",
+								"users",
 								"5ce907662c44975dc069b9ce"
 							]
 						}
