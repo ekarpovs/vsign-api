@@ -84,3 +84,13 @@ export const lock: RequestHandler = async (req, res, next) => {
     return next(error);
   }
 };
+
+export const remove: RequestHandler = async (req, res, next) => {
+  try {
+    const id = req.params.id;
+    const user = await User.findByIdAndRemove(id);
+    return res.json(user);
+  } catch ( error ) {
+    return next(error);
+  }
+};

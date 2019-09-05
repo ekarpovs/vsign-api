@@ -10,5 +10,6 @@ export const register = ( app: Application ) => {
   app.route('/api/user/:id')
   .get(checkIfAuthenticated, uc.one)
   .put(checkIfAuthenticated, uc.update)
-  .delete(checkIfAuthenticated, uc.lock);
+  .delete(checkIfAuthenticated, uc.remove);
+  // .delete(checkIfAuthenticated, uc.lock);
 };
