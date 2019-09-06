@@ -28,3 +28,11 @@ export const login: RequestHandler = async (req, res, next) => {
   // Create, sign the payload and assign token
   res.status(200).json(createAuthPayload(user)); // variant
 };
+
+export const logout: RequestHandler = async (req, res, next) => {
+  try {
+    return res.status(200).send(true);
+  } catch ( error ) {
+    return next(error);
+  }
+};
