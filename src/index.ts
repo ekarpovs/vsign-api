@@ -6,9 +6,13 @@ import * as express from './configuration/express.config';
 // initialize configuration
 dotenv.config();
 
+const dbUrl = process.env.NODE_ENV === 'prod' ?
+    process.env.MONGODB_URI_PROD :
+    process.env.MONGODB_URI_LOCAL;
+
 // Connect to MongoDb
 const dbOptions = {
-    url: 'mongodb://localhost/vsadmindb',
+    url: dbUrl,
     useCreateIndex: true,
     useNewUrlParser: true
 };
