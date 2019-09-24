@@ -23,7 +23,7 @@ const AccessSchema: Schema = new Schema({
   order: Boolean,
   product: Boolean,
   user: Boolean
-});
+}, { _id: false });
 
 const UserSchema: Schema = new Schema({
   access: AccessSchema,
