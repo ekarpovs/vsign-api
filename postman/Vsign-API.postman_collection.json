@@ -62,7 +62,12 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"owner\": \"Company00\",\n  \"name\": \"domain00\",\n  \"tradeMark\": \"Company02.Ltd\",\n  \"homeUrl\": \"https://comp02.com\",\n  \"email\": \"comp02@g.com\",\n  \"phone\": \"222222222\",\n  \"addresses\": [\n    {\n      \"zipCode\": 111456,\n      \"country\": \"Poland\",\n      \"city\": \"Krakow\",\n      \"street\": \"Central.st\",\n      \"building\": 1\n    }\n  ]\n}"
+							"raw": "{\n  \"owner\": \"Company00\",\n  \"name\": \"domain00\",\n  \"tradeMark\": \"Company02.Ltd\",\n  \"homeUrl\": \"https://comp02.com\",\n  \"email\": \"comp02@g.com\",\n  \"phone\": \"222222222\",\n  \"addresses\": [\n    {\n      \"zipCode\": 111456,\n      \"country\": \"Poland\",\n      \"city\": \"Krakow\",\n      \"street\": \"Central.st\",\n      \"building\": 1\n    }\n  ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
 						},
 						"url": {
 							"raw": "http://localhost:3005/api/domain",
@@ -175,8 +180,8 @@
 						"header": [
 							{
 								"key": "Content-Type",
-								"value": "application/json",
-								"type": "text"
+								"type": "text",
+								"value": "application/json"
 							}
 						],
 						"body": {
@@ -184,7 +189,7 @@
 							"raw": "{\n    \"phone\": \"55555555555\",\n    \"__v\": 0\n}\n"
 						},
 						"url": {
-							"raw": "http://localhost:3005/api/company/5ceb886f1dd3e84bf024600b",
+							"raw": "http://localhost:3005/api/domain/5d26ddff06cc364eb4380d22",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -192,8 +197,8 @@
 							"port": "3005",
 							"path": [
 								"api",
-								"company",
-								"5ceb886f1dd3e84bf024600b"
+								"domain",
+								"5d26ddff06cc364eb4380d22"
 							],
 							"query": [
 								{
@@ -302,7 +307,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"domain\": \"5d26ddff06cc364eb4380d22\",\n  \"name\": \"Product012\",\n  \"description\": \"Very good product012\"\n}"
+							"raw": "{\n  \"domain\": \"5d3d51f9a056a45d203d16d4\",\n  \"name\": \"Product001\",\n  \"description\": \"Very good product001\"\n}"
 						},
 						"url": {
 							"raw": "http://localhost:3005/api/products",
@@ -331,7 +336,7 @@
 							}
 						],
 						"url": {
-							"raw": "http://localhost:3005/products/5cbc48c639e738959c8e73e6?org=5cb890c58f304b8c30ecdd8f",
+							"raw": "http://localhost:3005/products/5cbc48c639e738959c8e73e6?domain=5d26ddff06cc364eb4380d22",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -343,8 +348,8 @@
 							],
 							"query": [
 								{
-									"key": "org",
-									"value": "5cb890c58f304b8c30ecdd8f"
+									"key": "domain",
+									"value": "5d26ddff06cc364eb4380d22"
 								}
 							]
 						}
@@ -396,6 +401,16 @@
 				{
 					"name": "Add Order",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
 						"method": "POST",
 						"header": [
 							{
@@ -406,7 +421,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"domain\": \"5ceb886f1dd3e84bf024600b\",\n  \"name\": \"Product012\",\n  \"description\": \"Very good product012\"\n}"
+							"raw": "{\n  \"amount\": 100,\n  \"creator\": \"\",\n  \"domain\": \"5ceb886f1dd3e84bf024600b\",\n  \"product\": \"5d88934f5f07507428535a9c\",\n  \"description\": \"Product002 - 1500\",\n  \"status\": {\n\t \"downloaded\": \"\",\n\t \"locked\": false,\n\t \"payed\": \"\"\n  }\n }"
 						},
 						"url": {
 							"raw": "http://localhost:3005/api/orders",
@@ -550,13 +565,19 @@
 						"header": [
 							{
 								"key": "Content-Type",
+								"name": "Content-Type",
 								"value": "application/json",
 								"type": "text"
 							}
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"domain\": \"5d26e6cd1db7eb55806ac59e\",\n  \"username\": \"user02\",\n  \"email\": \"user02@g.com\",\n  \"password\": \"Us123456\",\n  \"access\": [true, true, true, true],\n  \"locked\": false\n}\n"
+							"raw": "{\n  \"domain\": \"5d26e6cd1db7eb55806ac59e\",\n  \"username\": \"user02\",\n  \"email\": \"user02@g.com\",\n  \"password\": \"Us123456\",\n  \"access\": [true, true, true, true],\n  \"locked\": false\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
 						},
 						"url": {
 							"raw": "http://localhost:3005/api/users",
@@ -568,51 +589,6 @@
 							"path": [
 								"api",
 								"users"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Login",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"id": "9f515f8b-f658-4d58-832d-7fdbbf42b174",
-								"exec": [
-									"var jsonData = pm.response.json();",
-									"var token = jsonData.idToken;",
-									"",
-									"pm.environment.set(\"token\", token);"
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "Content-Type",
-								"type": "text",
-								"value": "application/json"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n  \"domainname\": \"domain00\",\n  \"username\": \"user00\",\n  \"password\": \"Us123456\"\n}"
-						},
-						"url": {
-							"raw": "http://localhost:3005/auth/login",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "3005",
-							"path": [
-								"auth",
-								"login"
 							]
 						}
 					},
@@ -733,8 +709,84 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "Logout",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"idToken\": \"eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVkNjYzYWFlNDE0Y2Q1NjAzNDNhYWI4OSIsImlhdCI6MTU2NzY5MzQyMCwiZXhwIjoxNTY3NzAwNjIwfQ.Ujeuu2iG9Bj-4jvOM7BFS0NmKSIORWDFi75m0mssv8_BtExKlMXv6C2PiplacEkxMxkIDohNvniaCyEILi3MYpe2RFqsyaaUTHwdn34Q_r0NK_BD5pipTttf98UuPvIjBvoED7FMMf8bW0P9SU_fi-3clXvNkHCXukzvGXRmCcg\",\r\n    \"expiresIn\": 1567700620978,\r\n    \"currentUser\": {\r\n        \"access\": {\r\n            \"_id\": \"5d663aae414cd560343aab8a\",\r\n            \"user\": false,\r\n            \"product\": false,\r\n            \"order\": true,\r\n            \"key\": true\r\n        },\r\n        \"domain\": \"5d3d51f9a056a45d203d16d4\",\r\n        \"id\": \"5d663aae414cd560343aab89\",\r\n        \"username\": \"user06\"\r\n    }\r\n}"
+						},
+						"url": {
+							"raw": "http://localhost:3005/auth/logout/5d3d51f9a056a45d203d16d5",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3005",
+							"path": [
+								"auth",
+								"logout",
+								"5d3d51f9a056a45d203d16d5"
+							]
+						}
+					},
+					"response": []
 				}
 			]
+		},
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "Login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "9f515f8b-f658-4d58-832d-7fdbbf42b174",
+								"exec": [
+									"var jsonData = pm.response.json();",
+									"var token = jsonData.idToken;",
+									"",
+									"pm.environment.set(\"token\", token);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"domainname\": \"domain00\",\n  \"username\": \"user06\",\n  \"password\": \"Us123456\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:3005/auth/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3005",
+							"path": [
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
 		},
 		{
 			"name": "Get Home Page",
