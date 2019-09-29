@@ -1,22 +1,39 @@
 import mongoose, { Schema, Document } from 'mongoose';
 import { IDomainModel } from './domain.model';
+import { IProductModel } from './product.model';
+import { IUserModel } from './user.model';
 
-export interface IOrderModel extends Document {
-  domain: IDomainModel;
+export interface IOrderStatusModel extends Document {
   created: Date;
-  description: string;
+  downloaded: Date;
   locked: boolean;
-  name: string;
+  payed: Date;
+}
+export interface IOrderModel extends Document {
+  amount: number;
+  creator: IUserModel;
+  description: string;
+  domain: IDomainModel;
+  product: IProductModel;
+  status: IOrderStatusModel;
 }
 
-const OrderSchema: Schema = new Schema({
+const OrderStatusSchema: Schema = new Schema({
   created: { type: Date, default: Date.now() },
+  downloaded: Date,
+  locked: Boolean,
+  payed: Date,
+}, { _id: false });
+
+const OrderSchema: Schema = new Schema({
+  amount: Number,
+  creator: { type: Schema.Types.ObjectId, ref: 'User', required: true, unique: false },
   description: String,
   domain: { type: Schema.Types.ObjectId, ref: 'Domain', unique: false },
-  locked: Boolean,
-  name: { type: String, required: true, unique: false }
+  product: { type: Schema.Types.ObjectId, ref: 'Product', unique: false },
+  status: OrderStatusSchema
 });
-OrderSchema.index({ name: 1, domain: 1 }, { unique: true });
+OrderSchema.index({ domain: 1 }, { unique: true });
 
 // Export the model and return IProduct interface
 export default mongoose.model<IOrderModel>('Order', OrderSchema);

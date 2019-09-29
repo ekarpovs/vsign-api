@@ -15,23 +15,22 @@ export const list: RequestHandler = async (req, res, next) => {
 
 export const create: RequestHandler = async (req, res, next) => {
   // Validate request body
-  // const { error } = validateProduct(req.body);
+  // const { error } = validateOrder(req.body);
   // if (error) { return res.status(400).send(error.details[0].message); }
 
-  // Check if the user with the name already exists
-  const nameExist = await Order.findOne({name: req.body.name});
-  if (nameExist) { return res.status(400).send('The product already exists'); }
-
-  const newProduct = new Order({
-    description: req.body.description,
-    domain: req.body.domain,
-    locked: false,
-    name: req.body.name
+  const { amount, creator, description, domain, product, status } = req.body;
+  const newDoc = new Order({
+    amount,
+    creator,
+    description,
+    domain,
+    product,
+    status
   });
 
   try {
-    const product = await newProduct.save();
-    return res.json(product);
+    const doc = await newDoc.save();
+    return res.json(doc);
   } catch ( error ) {
     return next(error);
   }
