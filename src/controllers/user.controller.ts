@@ -27,14 +27,15 @@ export const create: RequestHandler = async (req, res, next) => {
   // Hash password
   const salt = await bcrypt.genSalt(10);
   const hashedPassword = await bcrypt.hash(req.body.password, salt);
+  const {access, domain, email, locked, username } = req.body;
 
   const newUser = new User({
-    access: req.body.access,
-    domain: req.body.domain,
-    email: req.body.email,
-    locked: false,
+    access,
+    domain,
+    email,
+    locked,
     password: hashedPassword,
-    username: req.body.username
+    username
   });
 
   try {
@@ -56,6 +57,7 @@ export const one: RequestHandler = async (req, res, next) => {
   try {
     const id = req.params.id;
     const item = await User.findById(id);
+
     return res.json(item);
   } catch ( error ) {
     return next(error);
@@ -65,9 +67,10 @@ export const one: RequestHandler = async (req, res, next) => {
 export const update: RequestHandler = async (req, res, next) => {
   try {
     const id = req.params.id;
-    const newItem = req.body;
-    const { ...updateData } = newItem;
+    const { password, ...updateData } = req.body;
+
     const updated = await User.findByIdAndUpdate(id, updateData, { new: true });
+
     return res.json(updated);
   } catch ( error ) {
     return next(error);

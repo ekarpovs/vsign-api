@@ -1,7 +1,7 @@
 import mongoose, { Schema, Document } from 'mongoose';
 import { IDomainModel } from './domain.model';
 
-export interface IAccessModel {
+export interface IAccessModel extends Document {
   user: boolean;
   product: boolean;
   order: boolean;
@@ -24,6 +24,8 @@ const AccessSchema: Schema = new Schema({
   product: Boolean,
   user: Boolean
 }, { _id: false });
+
+export const Access = mongoose.model<IAccessModel>('Access', AccessSchema);
 
 const UserSchema: Schema = new Schema({
   access: AccessSchema,
