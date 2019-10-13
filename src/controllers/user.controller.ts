@@ -24,30 +24,20 @@ export const create: RequestHandler = async (req, res, next) => {
   const nameExist = await User.findOne({username: req.body.username, domain: req.body.domain});
   if (nameExist) { return res.status(400).send('The user already exists'); }
 
+  const { password, ...rest } = req.body;
   // Hash password
   const salt = await bcrypt.genSalt(10);
-  const hashedPassword = await bcrypt.hash(req.body.password, salt);
-  const {access, domain, email, locked, username } = req.body;
+  const hashedPassword = await bcrypt.hash(password, salt);
 
   const newUser = new User({
-    access,
-    domain,
-    email,
-    locked,
     password: hashedPassword,
-    username
+    ...rest
   });
 
   try {
     const user = await newUser.save();
-    const createdUser = {
-      access: user.access,
-      domain: user.domain,
-      id: user._id,
-      username: user.username
-    };
 
-    return res.json(createdUser);
+    return res.json(user);
   } catch ( error ) {
     return next(error);
   }
