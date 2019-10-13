@@ -18,14 +18,8 @@ export const create: RequestHandler = async (req, res, next) => {
   // const { error } = validateOrder(req.body);
   // if (error) { return res.status(400).send(error.details[0].message); }
 
-  const { amount, creator, description, domain, product, status } = req.body;
   const newDoc = new Order({
-    amount,
-    creator,
-    description,
-    domain,
-    product,
-    status
+    ...req.body
   });
 
   try {
@@ -73,7 +67,7 @@ export const remove: RequestHandler = async (req, res, next) => {
   try {
     const id = req.params.id;
     const order = await Order.findByIdAndRemove(id);
-    return res.json(order);
+    return res.json(order._id);
   } catch ( error ) {
     return next(error);
   }
