@@ -23,10 +23,8 @@ export const create: RequestHandler = async (req, res, next) => {
   if (nameExist) { return res.status(400).send('The product already exists'); }
 
   const newProduct = new Product({
-    description: req.body.description,
-    domain: req.body.domain,
-    locked: false,
-    name: req.body.name
+    ...req.body,
+    locked: false
   });
 
   try {
@@ -74,7 +72,7 @@ export const remove: RequestHandler = async (req, res, next) => {
   try {
     const id = req.params.id;
     const product = await Product.findByIdAndRemove(id);
-    return res.json(product);
+    return res.json(product._id);
   } catch ( error ) {
     return next(error);
   }
