@@ -82,7 +82,7 @@ export const remove: RequestHandler = async (req, res, next) => {
   try {
     const id = req.params.id;
     const user = await User.findByIdAndRemove(id);
-    return res.json(user);
+    return res.json(user._id);
   } catch ( error ) {
     return next(error);
   }
