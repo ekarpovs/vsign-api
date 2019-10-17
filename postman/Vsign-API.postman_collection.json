@@ -307,7 +307,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"domain\": \"5d3d51f9a056a45d203d16d4\",\n  \"name\": \"Product001\",\n  \"description\": \"Very good product001\"\n}"
+							"raw": "{\n  \"domain\": \"5d844e2c6723e46bc45a0012\",\n  \"name\": \"Product005\",\n  \"description\": \"Very good product005\",\n  \"registered\": {\n  \t\"by\": \"5da2f145bea7ec41fe061b85\"\n  }\n}"
 						},
 						"url": {
 							"raw": "http://localhost:3005/api/products",
@@ -421,7 +421,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"amount\": 100,\n  \"creator\": \"\",\n  \"domain\": \"5ceb886f1dd3e84bf024600b\",\n  \"product\": \"5d88934f5f07507428535a9c\",\n  \"description\": \"Product002 - 1500\",\n  \"status\": {\n\t \"downloaded\": \"\",\n\t \"locked\": false,\n\t \"payed\": \"\"\n  }\n }"
+							"raw": "{\n  \"amount\": 100,\n  \"creator\": \"5d8b32bc44d55804a051c9cc\",\n  \"domain\": \"5ceb886f1dd3e84bf024600b\",\n  \"product\": \"5d88934f5f07507428535a9c\",\n  \"description\": \"Product002 - 1500\",\n  \"status\": {\n\t \"downloaded\": \"\",\n\t \"locked\": false,\n\t \"payed\": \"\"\n  }\n }"
 						},
 						"url": {
 							"raw": "http://localhost:3005/api/orders",
@@ -572,7 +572,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"domain\": \"5d26e6cd1db7eb55806ac59e\",\n  \"username\": \"user02\",\n  \"email\": \"user02@g.com\",\n  \"password\": \"Us123456\",\n  \"access\": [true, true, true, true],\n  \"locked\": false\n}\n",
+							"raw": "{\n  \"domain\": \"5d844e2c6723e46bc45a0012\",\n  \"username\": \"user100\",\n  \"email\": \"user100@g.com\",\n  \"password\": \"Us123456\",\n  \"access\": { \"user\": true, \"product\": true, \"order\": true, \"key\": true },\n  \"locked\": false\n}\n",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -768,7 +768,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"domainname\": \"domain00\",\n  \"username\": \"user06\",\n  \"password\": \"Us123456\"\n}"
+							"raw": "{\n  \"domainname\": \"domain00\",\n  \"username\": \"user00\",\n  \"password\": \"Us123456\"\n}"
 						},
 						"url": {
 							"raw": "http://localhost:3005/auth/login",
