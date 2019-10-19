@@ -8,6 +8,7 @@ export interface IOrderStatusModel extends Document {
   downloaded: Date;
   locked: boolean;
   payed: Date;
+  prepared: Date;
 }
 export interface IOrderModel extends Document {
   amount: number;
@@ -23,6 +24,7 @@ const OrderStatusSchema: Schema = new Schema({
   downloaded: Date,
   locked: Boolean,
   payed: Date,
+  prepared: Date
 }, { _id: false });
 
 const OrderSchema: Schema = new Schema({
