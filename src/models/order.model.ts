@@ -7,6 +7,7 @@ export interface IOrderStatusModel extends Document {
   created: Date;
   downloaded: Date;
   locked: boolean;
+  notified: Date;
   payed: Date;
   prepared: Date;
 }
@@ -23,6 +24,7 @@ const OrderStatusSchema: Schema = new Schema({
   created: { type: Date, default: Date.now() },
   downloaded: Date,
   locked: Boolean,
+  notified: Date,
   payed: Date,
   prepared: Date
 }, { _id: false });

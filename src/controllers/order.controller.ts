@@ -43,8 +43,7 @@ export const one: RequestHandler = async (req, res, next) => {
 export const update: RequestHandler = async (req, res, next) => {
   try {
     const id = req.params.id;
-    const newItem = req.body;
-    const { ...updateData } = newItem;
+    const { ...updateData } = req.body;
     const updated = await Order.findByIdAndUpdate(id, updateData, { new: true });
     return res.json(updated);
   } catch ( error ) {
